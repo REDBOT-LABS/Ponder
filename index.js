@@ -4,10 +4,6 @@ const
     fs = require('fs'),
     color = require('chalk');
 
-if (!fs.existsSync('./reasons.json')) {
-    fs.writeFileSync('./reasons.json', JSON.stringify([], null, 4))
-}
-
 class b64 {
     constructor() {
         this.encode = (s) => {

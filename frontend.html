@@ -9,7 +9,8 @@
         var ip = 'http://127.0.0.1:7486'
         const http = new XMLHttpRequest();
         var pgp = false;
-        function togglePGP() {
+
+        function togglePGP() {//enables and disables visibility of the 
             if (document.getElementById('pgp').checked) {
                 document.getElementById('public-key').style.display = 'inline';
             }
@@ -17,35 +18,50 @@
                 document.getElementById('public-key').style.display = 'none';
             }
         }
+
+        var darkmode = true;
+
+        function toggleDark() {
+            if (darkmode) {
+                document.getElementById('body').classList.remove('darkmode');
+            }
+            else {
+                document.getElementById('body').classList.add('darkmode')
+            }
+            darkmode = !darkmode;
+        }
+
         function sendpost() {
             http.open("POST", `${ip}/post?${btoa(document.getElementById('post').value)}`);
             http.send();
         }
+
         function getpost() {
             let post = "";
             http.open("POST", `${ip}/get?${btoa(post)}`);
             http.send();
         }
+
         function getrandompost() {
             let post = "";
             http.open("POST", `${ip}/get?${btoa(random)}`);
             http.send();
         }
+
         http.onreadystatechange = (e) => {
             document.getElementById('response').value = http.responseText;
         }
+
     </script>
 </head>
 
-<body class="darkmode">
+<body id='body' class="darkmode">
     <center>
         <h3>v1.4</h3>
-        <div id="options" style="position: absolute; top: 3.5vh; left: 0vh;">
-            <label style="background-color: darkblue;">
-                <p style="transform: rotate(-0.125turn);">
-                    <input type="checkbox" id="darkmode" onchange="toggleDark()" checked>
-                    Dark mode
-                </p>
+        <div id="options" class="banner">
+            <label>
+                <input type="checkbox" id="darkmode" onchange="toggleDark()" checked>
+                Dark mode
             </label>
         </div>
         <textarea id='post' type="text" style="height: 10vh; width: 50vw; text-align: left; resize: none;"
