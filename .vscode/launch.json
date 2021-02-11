@@ -6,13 +6,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            //requires Node extension pack
             "type": "pwa-node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Backend",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\index.js"
+            "program": "${workspaceFolder}\\backend\\index.js"
         }
     ]
 }
