@@ -26,18 +26,20 @@ var serv = http.createServer((req, res) => {
     const { headers, method, url } = req;
     console.log(method);
     if (method === 'POST') {
-        arrURL = url.replace(/\//g, "").split('?').filter(a => a);
+        arrURL = url.replace("/", "").split('?').filter(a => a);
         console.log(arrURL)
         let args;
         switch (arrURL[0]) {
             case "get":
                 console.log(chalk.purple('got request to view post'));
                 args = base64.decode(arrURL[1]);
+                res.end();
                 console.log(args);
                 break;
             case "post":
                 console.log(chalk.blue('got request to create post'))
                 args = base64.decode(arrURL[1]);
+                res.end();
                 console.log(args);
                 break;
             case "brew":
