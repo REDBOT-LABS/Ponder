@@ -1,5 +1,6 @@
 * {
     font-family: 'Fira Code', monospace;
+    box-sizing: border-box;
 }
 
 .darkmode,
@@ -15,4 +16,11 @@
     top: 5vh;
     padding: 10px;
     transform: rotate(-45deg);
+}
+
+.postbox {
+    height: 10vh; 
+    width: 50vw;
+    text-align: left; 
+    resize: none;
 }

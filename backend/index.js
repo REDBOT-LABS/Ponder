@@ -1,29 +1,19 @@
-const chalk = require('chalk');
 const
     http = require('http'),
-    fs = require('fs'),
-    color = require('chalk');
-
-class b64 {
-    constructor() {
-        this.encode = (s) => {
-            return (Buffer.from(s).toString('base64'));
-
-        }
-        this.decode = (s) => {
-            return (Buffer.from(s, 'base64').toString('ascii'));
-        }
-    }
-}
+    chalk = require('chalk'),
+    b64 = require('./libs/b64'),
+    postmanager = require('./libs/postmanager');
 
 var arrURL = []
 var base64 = new b64;
 var serv = http.createServer((req, res) => {
     const { headers, method, url } = req;
-    console.log(method);
-    if (method === 'POST') {
+
+    if (method === 'POST') {//the only accepted method
+        //remove leading / and convert to 2 element array
         arrURL = url.replace("/", "").split('?').filter(a => a);
-        console.log(arrURL)
+
+        //define args ahead of use in switch
         let args;
         switch (arrURL[0]) {
             case "get":
@@ -54,5 +44,5 @@ var serv = http.createServer((req, res) => {
 serv.listen(7486);
 
 serv.on('listening', () => {
-    console.log(color.green("server ready"));
+    console.log(chalk.green("server ready"));
 });

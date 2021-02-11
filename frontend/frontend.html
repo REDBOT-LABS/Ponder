@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+    <script src="./frontend.js"></script>
+</head>
+
+<body id='body' class="darkmode">
+    <center>
+        <h3>Ponder v1.5</h3>
+
+        <div id="options" class="banner">
+            <label>
+                <input type="checkbox" id="darkmode" onchange="toggleDark()" checked>
+                Dark mode
+            </label>
+        </div>
+
+        <textarea id='post' type="text" class="postbox" placeholder=" Type a post here...">
+        </textarea>
+
+        <div id="buttons">
+            <button onclick="sendpost()">Post As</button>
+            <input type="text" id="username" style="width: auto; font-family: monospace;" placeholder="Username">
+
+            <button onclick="getpost()">debug: Get Post</button>
+
+            <p>
+                Verify
+                <input type="checkbox" id="pgp" onchange="togglePGP()">
+                <input type="text" id="public-key" placeholder="PGP signature..." style="
+                    font-family: monospace; 
+                    display: none;">
+            </p>
+
+        </div>
+        <div style="height: 25vh; width: 50vw; padding: 0px;">
+            <input disabled id='response' type="text"
+                style="width: 100%; height:20vh; margin-right: 0px; box-sizing: border-box;" onload="getrandompost()">
+            <button style="float: left;">left</button>
+            <button style="float: right; box-sizing: border-box;">right</button>
+        </div>
+    </center>
+</body>
+
+</html>
