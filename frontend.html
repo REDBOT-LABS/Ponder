@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+    <script>
+        var ip = 'http://127.0.0.1:7486'
+        const http = new XMLHttpRequest();
+        function sendpost() {
+            http.open("POST", `${ip}/post/?${btoa(document.getElementById('post').value)}`);
+            http.send();
+        }
+        function getpost() {
+
+        }
+        http.onreadystatechange = (e) => {
+            document.getElementById('response').value = http.responseText;
+        }
+    </script>
+</head>
+
+<body>
+    <center>
+        <h3>v1.4</h3>
+        <textarea id='post' type="text" style="height: 10vh; width: 50vw; text-align: left; resize: none;"
+            placeholder=" Type a post here..."></textarea>
+        <div id="buttons">
+            <input type="text" id="username" style="width: auto;" placeholder="Username">
+            <button onclick="sendpost()">Post</button>
+            <button onclick="getpost()">Get</button>
+        </div>
+        <input disabled id='response' type="text" style="height: 25vh; width: 50vw;" onload="getrandompost()">
+    </center>
+</body>
+
+</html>
