@@ -4,8 +4,7 @@
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-    <link href="./main.css" rel="stylesheet">
-    <script src="./frontend.js"></script>
+    <link href="./res/main.css" rel="stylesheet">
 </head>
 
 <body id='body' class="darkmode">
@@ -30,8 +29,8 @@
 
             <p>
                 Verify
-                <input type="checkbox" id="pgp" onchange="togglePGP()">
-                <input type="text" id="public-key" placeholder="PGP signature..." style="
+                <input type="checkbox" id="pass" onchange="togglePassword()">
+                <input type="text" id="psk" placeholder="Password..." style="
                     font-family: monospace; 
                     display: none;">
             </p>
@@ -45,5 +44,8 @@
         </div>
     </center>
 </body>
+<script src="./res/frontend.js"></script>
+<script src="./res/crypt.js">
+</script>
 
 </html>
