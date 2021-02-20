@@ -1,20 +1,12 @@
 const
-    fs = require('fs'),
-    nodeRSA = require('node-rsa'),
-    pubkey = new nodeRSA(fs.readFileSync('./.private/pubkey.pem')),
-    privkey = new nodeRSA(fs.readFileSync('./.private/privkey.pem'));
-
-function decrypt(text) {
-    try {
-        return privkey.decrypt(text).toString('ascii');
-    } catch (err) {
-        throw "decryption failed, is this the right key?"
-    }
-}
-
-function encrypt(text) {
-    return privkey.encryptPrivate(text).toString('base64');
-}
+    fs = require('fs');
+//TODO: try swapping node-rsa for jsencrypt to see if that solves anything
+/*nodeRSA = require('node-rsa'),
+pubkey = new nodeRSA(),
+privkey = new nodeRSA();
+pubkey.importKey(fs.readFileSync('./.private/pubkey.pem'));
+privkey.importKey(fs.readFileSync('./.private/privkey.pem'));
+*/
 
 /**
  * @description Create a new post as a user
@@ -30,7 +22,6 @@ function encrypt(text) {
  * 
  */
 function createmsg(user, message, password) {
-
 }
 
 /**
@@ -48,6 +39,8 @@ function createuser(name, password) {
 }
 
 module.exports = {
-    createmsg: createmsg,
-    createuser: createuser
+    createmsg,
+    createuser,
+    //encrypt,
+    //decrypt
 }
